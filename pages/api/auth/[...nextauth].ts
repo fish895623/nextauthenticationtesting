@@ -17,8 +17,10 @@ export const authOptions = {
     async jwt({ token }) {
       return token;
     },
-    async session({ session }) {
-      console.log(session);
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub as string;
+      }
       return session;
     },
   },
