@@ -1,13 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { signIn, useSession, signOut } from "next-auth/react";
 import styles from "@/styles/Home.module.css";
 import Headers from "@/components/Headers";
 import Footer from "@/components/Footer";
 
 const Home: NextPage = () => {
-  const { data, status } = useSession();
-
   return (
     <div className={styles.container}>
       <Head>
@@ -16,20 +13,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Headers />
-
-      <main className={styles.main}>
-        <p>status: {status}</p>
-        <p>{data?.user?.name}</p>
-        {data?.user ? (
-          <button type="button" onClick={() => signOut()}>
-            Google Logout
-          </button>
-        ) : (
-          <button type="button" onClick={() => signIn()}>
-            Google Login
-          </button>
-        )}
-      </main>
 
       <Footer />
     </div>

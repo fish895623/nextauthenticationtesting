@@ -20,6 +20,7 @@ export const authOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub as string;
+        console.log("This is user id", session.user.id);
       }
       return session;
     },

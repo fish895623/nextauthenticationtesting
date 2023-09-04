@@ -1,0 +1,11 @@
+.content {
+  display: flex;
+}
+
+.ul {
+  display: flex;
+}
+
+.li {
+  padding: 6px 8px;
+}
