@@ -1,10 +1,15 @@
 import { signIn, useSession, signOut } from "next-auth/react";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
+import "../styles/Home.module.css";
 
-const Button = () => {
+type ButtonProps = {
+  name: string;
+};
+
+export const Button = ({ name }: ButtonProps) => {
   return (
     <>
-      <li className={styles.li}>Home</li>
+      <li className={styles.li}>{name}</li>
     </>
   );
 };
@@ -17,19 +22,20 @@ export default function Headers() {
       <header>
         <nav>
           <ul className={styles.ul}>
-            <Button />
-            <li className={styles.li}>About</li>
-            <li>Blog</li>
-            <li>Contact</li>
-            <li>status: {status}</li>
-            <li>{data?.user?.name}</li>
+            <Button name="Home" />
+            <Button name="About" />
+            <Button name="Blog" />
+            <Button name="Contact" />
+            <Button name="Contact" />
+            <Button name={`status: ${status}`} />
+            <Button name={data?.user?.name} />
             {data?.user ? (
               <button type="button" onClick={() => signOut()}>
-                Google Logout
+                Logout
               </button>
             ) : (
               <button type="button" onClick={() => signIn()}>
-                Google Login
+                Login
               </button>
             )}
           </ul>
